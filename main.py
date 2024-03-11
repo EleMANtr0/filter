@@ -52,7 +52,7 @@ class Filter:
                 continue
             x_rms.append(temp_rms)
             j = 0
-        self.f_plot(x, x_rms)
+        self._f_plot(x, x_rms)
     def _f_plot(self, y1, y2 = [], x1 = [], labely = "angle", labelx = "t"):
         if not len(x1):
             x1 = self.df.index
