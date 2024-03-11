@@ -110,21 +110,21 @@ class Filter:
         # m_col = mu.columns
         # m = mu[m_col[0]].values
         m = mu0
-        # for i in range(len(x)):
-        #     m = mu0 + mu[i]
-        #     xt = x[i] ** 2
-        #     print("x**2:",xt)
-        #     print("mu0-dmu ** 2:",m**2)
-        #     print("diff:",abs(xt-m**2))
-        #     if sigma > abs(xt-m**2):
-        #         if mu0 < x[i]:
-        #             mu0 -= np.sqrt(abs(sigma-xt))
-        #         elif mu0 > x[i]:
-        #             mu0 += np.sqrt(abs(sigma-xt))
-        #     x_fit.append(mu0)
-        # self._f_plot(x, xn, t)
-        # self._f_plot(x, x_fit, t)
-        # self._f_plot(xn, x_fit, t)
+        for i in range(len(x)):
+            m = mu0 + mu[i]
+            xt = x[i] ** 2
+            print("x**2:",xt)
+            print("mu0-dmu ** 2:",m**2)
+            print("diff:",abs(xt-m**2))
+            if sigma > abs(xt-m**2):
+                if mu0 < x[i]:
+                    mu0 -= np.sqrt(abs(sigma-xt))
+                elif mu0 > x[i]:
+                    mu0 += np.sqrt(abs(sigma-xt))
+            x_fit.append(mu0)
+        self._f_plot(x, xn, t)
+        self._f_plot(x, x_fit, t)
+        self._f_plot(xn, x_fit, t)
 
 def gen_file(start_pos):
     t = [i for i in range(2500)]
@@ -149,4 +149,4 @@ if __name__ == '__main__':
     CSV = File()
     data = CSV.read_CSV(r"C:\Users\EleMANtrO\PycharmProjects\filter\test.txt")
     gauss_filter = Filter(data)
-    # gauss_filter.gauss()
+    gauss_filter.gauss()
