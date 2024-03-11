@@ -37,7 +37,7 @@ class Filter:
 
     def RootMS(self, prm = 0.2):
         x = self.angles
-        cache_obj = Cache(self.df, 50)
+        cache_obj = Cache(self.df, 100)
         x_rms = []
         j = 0
         delta = 0.0
